@@ -1,0 +1,43 @@
+CREATE DATABASE spring_security2;
+USE spring_security2;
+-- Dumping structure for table spring_security2.authorities
+CREATE TABLE IF NOT EXISTS `authorities` (
+  `username` varchar(55) CHARACTER SET latin1 NOT NULL,
+  `authority` varchar(55) CHARACTER SET latin1 NOT NULL,
+  KEY `khong` (`username`,`authority`) USING BTREE,
+  CONSTRAINT `khong` FOREIGN KEY (`username`) REFERENCES `users` (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table spring_security2.authorities: ~4 rows (approximately)
+INSERT INTO `authorities` (`username`, `authority`) VALUES
+	('ngoc', 'ROLE_EMPLOYEE'),
+	('quan', 'ROLE_ADMIN'),
+	('tuan', 'ROLE_EMPLOYEE'),
+
+-- Dumping structure for table spring_security2.users
+CREATE TABLE IF NOT EXISTS `users` (
+  `username` varchar(55) CHARACTER SET latin1 NOT NULL,
+  `password` char(68) CHARACTER SET latin1 NOT NULL,
+  `enabled` tinyint(1) NOT NULL,
+  PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Dumping data for table spring_security2.users: ~4 rows (approximately)
+INSERT INTO `users` (`username`, `password`, `enabled`) VALUES
+	('ngoc', '{bcrypt}$2a$12$7e0R1QWrlwQhvkja.g7NZOOarMwBnmPP9uHBIK/YQMqwU5SUkrSLa', 1),
+	('quan', '{bcrypt}$2a$12$7e0R1QWrlwQhvkja.g7NZOOarMwBnmPP9uHBIK/YQMqwU5SUkrSLa', 1),
+	('tuan', '{bcrypt}$2a$12$7e0R1QWrlwQhvkja.g7NZOOarMwBnmPP9uHBIK/YQMqwU5SUkrSLa', 0),
+
+
+CREATE DATABASE employees_db;
+USE employees_db;
+CREATE TABLE Employee (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    wage DECIMAL(10, 2) NOT NULL
+);
+INSERT INTO Employee (name, wage) VALUES ('vinh', 5000.00);
+INSERT INTO Employee (name, wage) VALUES ('tien', 5500.00);
+
+
+
